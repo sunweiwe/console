@@ -1,0 +1,51 @@
+@import '../../common/var.less';
+
+.form-listing {
+  height: 100%;
+  font-size: 18px;
+  font-family: 'Source Han Sans CN';
+  background: white;
+
+  .header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 80px;
+    padding: 0 20px;
+    border-bottom: 1px solid @border;
+  }
+
+  .layout {
+    display: flex;
+    height: calc(100% - 80px);
+
+    .menu {
+      width: 400px;
+      padding: 10px 20px 0;
+      border-right: 1px solid @border;
+
+      .info {
+        height: 100px;
+        background: #806d9e;
+        border-radius: 5px;
+      }
+    }
+
+    .content {
+      flex: 1;
+      padding: 20px;
+      background: #eee;
+
+      .card {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        height: 100px;
+        margin: 10px 0;
+        padding: 0 20px;
+        border-radius: 4px;
+        background: #fff;
+      }
+    }
+  }
+}

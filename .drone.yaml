@@ -1,0 +1,33 @@
+kind: pipeline
+type: kubernetes
+name: default
+
+steps:
+  - name: docker
+    image: plugins/docker
+    settings:
+      registry: harbor.sunweiwei.xyz
+      repo: harbor.sunweiwei.xyz/library/sliver
+      dockerfile: ./Dockerfile
+      username: admin
+      password: Harbor12345
+      purge: false
+      no_cache: false
+      auto_tag: true
+  - name: deploy
+    image: danielgormly/drone-plugin-kube:0.2.0
+    settings:
+      namespace: default
+      ca:
+        from_secret: ca
+      template: deployment.yaml
+      server:
+        from_secret: kubernetes_server
+      token:
+        from_secret: kubernetes_token
+      repo: harbor.sunweiwei.xyz/library/sliver
+
+trigger:
+  branches:
+    include:
+      - master
